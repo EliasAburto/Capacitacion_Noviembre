@@ -1,0 +1,3 @@
+"0","#devtools::install_github(""gadenbuie/xaringanExtra"")"
+"0","library(xaringanExtra)"
+"0","xaringanExtra::use_xaringan_extra(c(""tile_view"", ""tachyons"", ""panelset""))"
