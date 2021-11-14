@@ -14,11 +14,11 @@ output:
       ratio: 16:11
 encoding: "UTF-8"
 ---
-
 class: inverse, center, middle
 # .font150[Qué es visualización de datos]
 
-
+---
+---
 class: inverse, center, middle
 # .font150[Cómo construir gráficos con ggplot2]
 
