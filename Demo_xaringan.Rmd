@@ -16,6 +16,11 @@ encoding: "UTF-8"
 ---
 
 class: inverse, center, middle
+# .font150[Definiciones elementales - Elías Aburto]
+
+---
+
+class: inverse, center, middle
 # .font150[Qué es la visualización de datos]
 
 
