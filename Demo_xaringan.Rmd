@@ -140,6 +140,86 @@ xaringanExtra::use_extra_styles(
 ```
 
 ---
+
+# HISTOGRAMAS
+.font105[**Presentación básica de un histograma**]
+
+.panelset[
+.panel[.panel-name[Paso 1]
+
+#### 1. Cargar paquetes
+
+- `tidyverse` y `patchwork`
+
+.pull-left[
+```{r}
+library(tidyverse)
+```
+]
+
+.pull-right[
+```{r}
+library(patchwork)
+```
+]
+
+]
+
+.panel[.panel-name[Paso 2]
+
+#### 2. Importar datos
+
+
+.pull-left[
+```{r, eval = FALSE}
+datos <- read_csv(file = "data3_clean.csv") 
+```
+]
+]
+
+.panel[.panel-name[Paso 3]
+
+#### 3. Cargar datos en ggplot
+
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(datos) 
+```
+]
+
+
+]
+
+.panel[.panel-name[Paso 4]
+
+#### 4. Indicar la variable de análisis con aes
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(datos, aes(x = ase_total)) 
+```
+]
+
+]
+
+.panel[.panel-name[Paso 5]
+
+#### 5. Señalar que se trabajará con un gráfico de histograma
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(datos, aes(x = ase_total)) +
+  geom_histogram()
+```
+]
+
+
+]
+]
+
+---
+
 class: inverse
 
 background-image:url(https://pbs.twimg.com/media/DsdIzJ3VsAAbjMW?format=jpg&name=small)

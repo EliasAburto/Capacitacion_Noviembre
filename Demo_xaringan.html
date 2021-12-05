@@ -10,7 +10,7 @@
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"a15dbdee850d489c9e19b573b18c97ee","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x1ee49263662426893e831f7517e6d93","expires":1}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -119,7 +119,6 @@ En el ejemplo de Anscombe a pesar de que las puntuaciones estaban en distintas p
 
 
 
-
 <div>
 <style type="text/css">.xaringan-extra-logo {
 width: 100px;
@@ -155,37 +154,21 @@ top:1em;right:1em;
 </div>
 
 ---
-class: inverse
 
-background-image:url(https://pbs.twimg.com/media/DsdIzJ3VsAAbjMW?format=jpg&amp;name=small)
-background-size: cover     
+# HISTOGRAMAS
+.font105[**Presentación básica de un histograma**]
 
----
-#Capas básicas
+.panelset[
+.panel[.panel-name[Paso 1]
+
+#### 1. Cargar paquetes
+
+- `tidyverse` y `patchwork`
 
 .pull-left[
-Un gráfico esta compuesto **mínimamente** por tres capas: 
-- Datos
-- Coordenadas
-- Geometría
-]
-
-.pull-right[
-&lt;img src="imagenes/ggplot2_capas_básicas.png" width="100%" /&gt;
-]
-
----
-# Paso 0. Cargar paquete 
-
-.font105[.line-space1-5[
-`Tidyverse` es un ecosistema de paquetes, entre los cuales se encuentra `ggplot2`
-]]
-
---
-
 
 ```r
-library(tidyverse)                
+library(tidyverse)
 ```
 
 ```
@@ -240,6 +223,112 @@ library(tidyverse)
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
+]
+
+.pull-right[
+
+```r
+library(patchwork)
+```
+
+```
+## Warning: package 'patchwork' was built under R version 4.0.4
+```
+]
+
+]
+
+.panel[.panel-name[Paso 2]
+
+#### 2. Importar datos
+
+
+.pull-left[
+
+```r
+datos &lt;- read_csv(file = "data3_clean.csv") 
+```
+]
+]
+
+.panel[.panel-name[Paso 3]
+
+#### 3. Cargar datos en ggplot
+
+
+.pull-left[
+
+```r
+ggplot(datos) 
+```
+]
+
+
+]
+
+.panel[.panel-name[Paso 4]
+
+#### 4. Indicar la variable de análisis con aes
+
+.pull-left[
+
+```r
+ggplot(datos, aes(x = ase_total)) 
+```
+]
+
+]
+
+.panel[.panel-name[Paso 5]
+
+#### 5. Señalar que se trabajará con un gráfico de histograma
+
+.pull-left[
+
+```r
+ggplot(datos, aes(x = ase_total)) +
+  geom_histogram()
+```
+]
+
+
+]
+]
+
+---
+
+class: inverse
+
+background-image:url(https://pbs.twimg.com/media/DsdIzJ3VsAAbjMW?format=jpg&amp;name=small)
+background-size: cover     
+
+---
+#Capas básicas
+
+.pull-left[
+Un gráfico esta compuesto **mínimamente** por tres capas: 
+- Datos
+- Coordenadas
+- Geometría
+]
+
+.pull-right[
+&lt;img src="imagenes/ggplot2_capas_básicas.png" width="100%" /&gt;
+]
+
+---
+# Paso 0. Cargar paquete 
+
+.font105[.line-space1-5[
+`Tidyverse` es un ecosistema de paquetes, entre los cuales se encuentra `ggplot2`
+]]
+
+--
+
+
+```r
+library(tidyverse)                
+```
 
 ---
 # Paso 1. Base de datos
@@ -257,7 +346,7 @@ ggplot(data = iris)
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -279,7 +368,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-15-1.png" width="504" /&gt;
 ]
 
 ---
@@ -300,7 +389,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-17-1.png" width="504" /&gt;
 ]
 
 ---
@@ -332,7 +421,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-13-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-19-1.png" width="504" /&gt;
 ]
 
 ---
@@ -355,7 +444,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -383,7 +472,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
 ]
 
 ---

@@ -1,0 +1,6 @@
+"0","xaringanExtra::use_logo("
+"0","  image_url = ""img/logo.png"","
+"0","  link_url = ""https://www.linktr.ee/innov_lab"","
+"0","  width = 100,"
+"0","  height = 100"
+"0",")"

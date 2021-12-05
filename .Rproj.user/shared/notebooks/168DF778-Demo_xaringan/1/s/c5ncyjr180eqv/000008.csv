@@ -1,0 +1,6 @@
+"0",""
+"0","xaringanExtra::use_clipboard("
+"0","  button_text = ""Copiar"","
+"0","  success_text = ""Copiado"","
+"0","  error_text = ""Presiona Ctrl+C para copiar"""
+"0",")"
