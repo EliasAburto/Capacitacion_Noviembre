@@ -10,7 +10,7 @@
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x1ee49263662426893e831f7517e6d93","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x1b64606d0c945a7b4166af570f1c298","expires":1}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -38,6 +38,8 @@ class: center, middle, inverse, title-slide
 
 class: inverse, center, middle
 # .font150[Qué es la visualización de datos]
+
+
 
 
 ---
@@ -155,6 +157,12 @@ top:1em;right:1em;
 
 ---
 
+class: inverse, center, middle
+# .font150[Histogramas con R]
+
+
+---
+
 # HISTOGRAMAS
 .font105[**Presentación básica de un histograma**]
 
@@ -246,9 +254,10 @@ library(patchwork)
 .pull-left[
 
 ```r
-datos &lt;- read_csv(file = "data3_clean.csv") 
+datos &lt;- read_csv(file = "data3_clean.csv")
 ```
 ]
+
 ]
 
 .panel[.panel-name[Paso 3]
@@ -263,6 +272,9 @@ ggplot(datos)
 ```
 ]
 
+.pull-right[
+&lt;img src="imagenes/1. Vincular datos a ggplot.png" width="100%" /&gt;
+]
 
 ]
 
@@ -277,6 +289,9 @@ ggplot(datos, aes(x = ase_total))
 ```
 ]
 
+.pull-right[
+&lt;img src="imagenes/2. Indicar la variable de análisis.png" width="100%" /&gt;
+]
 ]
 
 .panel[.panel-name[Paso 5]
@@ -291,9 +306,116 @@ ggplot(datos, aes(x = ase_total)) +
 ```
 ]
 
+.pull-right[
+&lt;img src="imagenes/3. Gráfico histograma.png" width="100%" /&gt;
+]
 
 ]
 ]
+
+---
+# HISTOGRAMAS
+.font105[**Personalización de un histograma**]
+
+.panelset[
+.panel[.panel-name[Paso 6]
+
+#### 6. Amplitud de intervalo, color, relleno.
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = 5,
+                 color = "black",
+                 fill = "skyblue")
+```
+]
+
+.pull-right[
+&lt;img src="imagenes/6. Amplitud, color, relleno.png" width="100%" /&gt;
+]
+
+]
+
+.panel[.panel-name[Paso 7]
+
+#### 7. Tema
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = 5,
+                 color = "black",
+                 fill = "skyblue") +
+  theme_classic()
+```
+]
+
+.pull-right[
+&lt;img src="imagenes/7. Tema.png" width="100%" /&gt;
+]
+
+]
+
+.panel[.panel-name[Paso 8]
+
+#### 8. Anotaciones (labs)
+
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = 5,
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica",
+    subtitle = "Base de datos 3 - AMP",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  theme_classic()
+```
+]
+
+.pull-right[
+&lt;img src="imagenes/8. Anotaciones.png" width="100%" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 9]
+
+#### 9. Utilizar facet_wrap para visualizar los resultados según un tipo de variable categórica
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = 5,
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica según el sexo",
+    subtitle = "Base de datos 3 - AMP",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  facet_wrap(vars(sexo)) + 
+  theme_classic()
+```
+]
+
+.pull-right[
+&lt;img src="imagenes/9. Facet wrap.png" width="100%" /&gt;
+]
+
+]
+
+]
+
 
 ---
 
@@ -346,7 +468,7 @@ ggplot(data = iris)
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -368,7 +490,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-15-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-27-1.png" width="504" /&gt;
 ]
 
 ---
@@ -389,7 +511,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-17-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-29-1.png" width="504" /&gt;
 ]
 
 ---
@@ -421,7 +543,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-19-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-31-1.png" width="504" /&gt;
 ]
 
 ---
@@ -444,7 +566,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-33-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -472,7 +594,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-35-1.png)&lt;!-- --&gt;
 ]
 
 ---

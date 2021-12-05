@@ -19,6 +19,10 @@ class: inverse, center, middle
 # .font150[Qué es la visualización de datos]
 
 
+```{r, include=FALSE}
+data <- read.csv(file = "data3_clean.csv")
+```
+
 ---
 # Qué es la visualización de datos
 .font105[Algunas **definiciones** (Cairo, 2016).]
@@ -141,6 +145,12 @@ xaringanExtra::use_extra_styles(
 
 ---
 
+class: inverse, center, middle
+# .font150[Histogramas con R]
+
+
+---
+
 # HISTOGRAMAS
 .font105[**Presentación básica de un histograma**]
 
@@ -172,9 +182,10 @@ library(patchwork)
 
 .pull-left[
 ```{r, eval = FALSE}
-datos <- read_csv(file = "data3_clean.csv") 
+datos <- read_csv(file = "data3_clean.csv")
 ```
 ]
+
 ]
 
 .panel[.panel-name[Paso 3]
@@ -188,6 +199,11 @@ ggplot(datos)
 ```
 ]
 
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/1. Vincular datos a ggplot.png", dpi = 500)
+```
+]
 
 ]
 
@@ -201,6 +217,11 @@ ggplot(datos, aes(x = ase_total))
 ```
 ]
 
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/2. Indicar la variable de análisis.png", dpi = 500)
+```
+]
 ]
 
 .panel[.panel-name[Paso 5]
@@ -214,9 +235,122 @@ ggplot(datos, aes(x = ase_total)) +
 ```
 ]
 
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/3. Gráfico histograma.png", dpi = 500)
+```
+]
 
 ]
 ]
+
+---
+# HISTOGRAMAS
+.font105[**Personalización de un histograma**]
+
+.panelset[
+.panel[.panel-name[Paso 6]
+
+#### 6. Amplitud de intervalo, color, relleno.
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = 5,
+                 color = "black",
+                 fill = "skyblue")
+```
+]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/6. Amplitud, color, relleno.png", dpi = 500)
+```
+]
+
+]
+
+.panel[.panel-name[Paso 7]
+
+#### 7. Tema
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = 5,
+                 color = "black",
+                 fill = "skyblue") +
+  theme_classic()
+```
+]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/7. Tema.png", dpi = 500)
+```
+]
+
+]
+
+.panel[.panel-name[Paso 8]
+
+#### 8. Anotaciones (labs)
+
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = 5,
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica",
+    subtitle = "Base de datos 3 - AMP",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  theme_classic()
+```
+]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/8. Anotaciones.png", dpi = 500)
+```
+]
+]
+
+.panel[.panel-name[Paso 9]
+
+#### 9. Utilizar facet_wrap para visualizar los resultados según un tipo de variable categórica
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = 5,
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica según el sexo",
+    subtitle = "Base de datos 3 - AMP",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  facet_wrap(vars(sexo)) + 
+  theme_classic()
+```
+]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/9. Facet wrap.png", dpi = 500)
+```
+]
+
+]
+
+]
+
 
 ---
 

@@ -1,6 +1,0 @@
-"0","library(xaringanthemer)"
-"0","style_mono_accent("
-"0","  base_color       = ""#43418A"","
-"0","  padding          = ""16px 50px 12px 50px"","
-"0","  code_font_google = google_font(""Fira Mono"")"
-"0",")"
