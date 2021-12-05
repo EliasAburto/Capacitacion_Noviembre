@@ -35,10 +35,6 @@ data <- read.csv(file = "data3_clean.csv")
 **Visualización** es un tipo de representación visual de información diseñada para permitir la comunicación, el análisis, el descubrimiento, la exploración, etc.
 
 
-```
-<img src="https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png" width="300px"/>
-```
-
 ]
 
 .panel[.panel-name[Gráfico]
@@ -146,7 +142,7 @@ xaringanExtra::use_extra_styles(
 ---
 
 class: inverse, center, middle
-# .font150[Histogramas con R]
+# .font150[HISTOGRAMAS CON R]
 
 
 ---
