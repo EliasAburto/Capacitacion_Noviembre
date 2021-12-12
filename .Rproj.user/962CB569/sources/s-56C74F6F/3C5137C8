@@ -3,7 +3,7 @@
     "path": "~/2. SOCIAL/AMP/2021/CAPACITACIONES INTERNAS/Capacitacion_Noviembre/Demo_xaringan.Rmd",
     "project_path": "Demo_xaringan.Rmd",
     "type": "r_markdown",
-    "hash": "3104857231",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1636931687942.0,
@@ -12,17 +12,17 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "last_setup_crc32": "B848783Be907aa8d",
-        "cursorPosition": "35,0",
-        "scrollLine": "33",
+        "last_setup_crc32": "",
+        "cursorPosition": "119,3",
+        "scrollLine": "119",
         "working_dir": "current"
     },
     "folds": "",
-    "lastKnownWriteTime": 1638727679,
+    "lastKnownWriteTime": 1639268698,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1638727680023,
+    "last_content_update": 1639268698906,
     "read_only": false,
     "read_only_alternatives": []
 }

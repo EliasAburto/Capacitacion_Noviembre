@@ -10,7 +10,7 @@
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x84c2b8be2914f6e8349fde20f4f185a","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xc70de9fe61a4e3c86406bdd36286c20","expires":1}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -61,10 +61,11 @@ class: inverse, center, middle
 #### 2. Definición
 
 
-.pull-left[Un **gráfico** (chart o plot como sinónimos) es una representación en la que los datos se codifican con símbolos que tienen diferentes formas, colores o proporciones.]
+.pull-left[
+Un **gráfico** (chart o plot como sinónimos) es una representación en la que los datos se codifican con símbolos que tienen diferentes formas, colores o proporciones.]
 
 .pull-right[
-&lt;img src="imagenes/0.1.PNG" width="100%" /&gt;
+&lt;img src="imagenes/0.2.PNG" width="100%" /&gt;
 ]
 
 ]
@@ -73,7 +74,12 @@ class: inverse, center, middle
 
 #### 3. Definición
 
-Un **mapa** es una representación de un área geográfica o una representación de los datos que pertenecen a esa área geográfica.
+.pull-left[
+Un **mapa** es una representación de un área geográfica o una representación de los datos que pertenecen a esa área geográfica.]
+
+.pull-right[
+&lt;img src="imagenes/0.3.PNG" width="100%" /&gt;
+]
 
 ]
 
@@ -81,7 +87,13 @@ Un **mapa** es una representación de un área geográfica o una representación
 
 #### 4. Definición
 
-Una **infografía** es una representación visual multiseccional de información con la intención de comunicar uno o más mensajes específicos. Son una mezcla de gráficos, mapas, ilustraciones y texto que brinda explicación y contexto.
+.pull-left[Una **infografía** es una representación visual multiseccional de información con la intención de comunicar uno o más mensajes específicos. Son una mezcla de gráficos, mapas, ilustraciones y texto que brinda explicación y contexto.
+]
+
+.pull-right[
+&lt;img src="imagenes/0.4.PNG" width="100%" /&gt;
+]
+
 
 ]
 
@@ -155,6 +167,11 @@ top:1em;right:1em;
 
 class: inverse, center, middle
 # .font150[HISTOGRAMAS CON R]
+
+---
+
+# .font150[HISTOGRAMAS CON R]
+
 
 
 ---
@@ -246,13 +263,30 @@ library(patchwork)
 
 #### 2. Importar datos
 
-
-.pull-left[
+.font105[
 
 ```r
-datos &lt;- read_csv(file = "data3_clean.csv")
+data &lt;- read_csv(file = "data3_clean.csv")
 ```
+
+
+```
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_double(),
+##   sexo = col_character(),
+##   convive = col_character(),
+##   escuela = col_character(),
+##   ase_cat = col_character(),
+##   bur_cat = col_character()
+## )
+## i Use `spec()` for the full column specifications.
+```
+
 ]
+
+
 
 ]
 
@@ -264,12 +298,12 @@ datos &lt;- read_csv(file = "data3_clean.csv")
 .pull-left[
 
 ```r
-ggplot(datos) 
+ggplot(data)
 ```
 ]
 
 .pull-right[
-&lt;img src="imagenes/1. Vincular datos a ggplot.png" width="100%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-12-1.png" width="70%" /&gt;
 ]
 
 ]
@@ -281,12 +315,12 @@ ggplot(datos)
 .pull-left[
 
 ```r
-ggplot(datos, aes(x = ase_total)) 
+ggplot(data, aes(x = ase_total)) 
 ```
 ]
 
 .pull-right[
-&lt;img src="imagenes/2. Indicar la variable de análisis.png" width="100%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-14-1.png" width="70%" /&gt;
 ]
 ]
 
@@ -297,13 +331,18 @@ ggplot(datos, aes(x = ase_total))
 .pull-left[
 
 ```r
-ggplot(datos, aes(x = ase_total)) +
+ggplot(data, aes(x = ase_total)) +
   geom_histogram()
 ```
 ]
 
 .pull-right[
-&lt;img src="imagenes/3. Gráfico histograma.png" width="100%" /&gt;
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-16-1.png" width="70%" /&gt;
 ]
 
 ]
@@ -316,33 +355,59 @@ ggplot(datos, aes(x = ase_total)) +
 .panelset[
 .panel[.panel-name[Paso 6]
 
-#### 6. Amplitud de intervalo, color, relleno.
+#### 6. Amplitud de intervalo utilizando la regla de Sturges `function(x) (max(x)-min(x))/nclass.Sturges(x)`.
 
 .pull-left[
 
 ```r
 ggplot(data, aes(x = ase_total)) +
-  geom_histogram(binwidth = 5,
+  geom_histogram(binwidth = 7))
+```
+
+
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x))
+```
+
+]
+
+.pull-right[
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-19-1.png" width="70%" /&gt;
+]
+]
+
+.panel[.panel-name[Paso 7]
+
+####7. Color y relleno.
+
+.pull-left[
+
+```r
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
                  color = "black",
                  fill = "skyblue")
 ```
 ]
 
 .pull-right[
-&lt;img src="imagenes/6. Amplitud, color, relleno.png" width="100%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-21-1.png" width="70%" /&gt;
+]
 ]
 
-]
 
-.panel[.panel-name[Paso 7]
 
-#### 7. Tema
+.panel[.panel-name[Paso 8]
+
+#### 8. Tema
 
 .pull-left[
 
 ```r
 ggplot(data, aes(x = ase_total)) +
-  geom_histogram(binwidth = 5,
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
                  color = "black",
                  fill = "skyblue") +
   theme_classic()
@@ -350,26 +415,26 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="imagenes/7. Tema.png" width="100%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-23-1.png" width="80%" /&gt;
 ]
 
 ]
 
-.panel[.panel-name[Paso 8]
+.panel[.panel-name[Paso 9]
 
-#### 8. Anotaciones (labs)
+#### 9. Anotaciones (labs)
 
 
 .pull-left[
 
 ```r
 ggplot(data, aes(x = ase_total)) +
-  geom_histogram(binwidth = 5,
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
                  color = "black",
                  fill = "skyblue") + 
   labs(
     title = "Distribución de puntajes de Autoeficacia Académica",
-    subtitle = "Base de datos 3 - AMP",
+    subtitle = "Base de datos de Rohmani &amp; Andriani (2021)",
     x = "Autoeficacia Académica",
     y = "Frecuencia",
     caption  = "Avances en Medición Psicológica") +
@@ -378,24 +443,26 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="imagenes/8. Anotaciones.png" width="100%" /&gt;
-]
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-25-1.png" width="80%" /&gt;
 ]
 
-.panel[.panel-name[Paso 9]
 
-#### 9. Utilizar facet_wrap para visualizar los resultados según un tipo de variable categórica
+]
+
+.panel[.panel-name[Paso 10]
+
+#### 10. Utilizar facet_wrap para visualizar los resultados según un tipo de variable categórica
 
 .pull-left[
 
 ```r
 ggplot(data, aes(x = ase_total)) +
-  geom_histogram(binwidth = 5,
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
                  color = "black",
                  fill = "skyblue") + 
   labs(
     title = "Distribución de puntajes de Autoeficacia Académica según el sexo",
-    subtitle = "Base de datos 3 - AMP",
+    subtitle = "Base de datos de Rohmani &amp; Andriani (2021)",
     x = "Autoeficacia Académica",
     y = "Frecuencia",
     caption  = "Avances en Medición Psicológica") +
@@ -405,11 +472,9 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="imagenes/9. Facet wrap.png" width="100%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-27-1.png" width="80%" /&gt;
 ]
-
 ]
-
 ]
 
 
@@ -464,7 +529,7 @@ ggplot(data = iris)
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -486,7 +551,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-27-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-33-1.png" width="504" /&gt;
 ]
 
 ---
@@ -507,7 +572,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-29-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-35-1.png" width="504" /&gt;
 ]
 
 ---
@@ -539,7 +604,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-31-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-37-1.png" width="504" /&gt;
 ]
 
 ---
@@ -562,7 +627,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-33-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-39-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -590,7 +655,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-35-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-41-1.png)&lt;!-- --&gt;
 ]
 
 ---

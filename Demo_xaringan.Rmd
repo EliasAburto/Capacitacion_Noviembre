@@ -42,11 +42,12 @@ data <- read.csv(file = "data3_clean.csv")
 #### 2. Definición
 
 
-.pull-left[Un **gráfico** (chart o plot como sinónimos) es una representación en la que los datos se codifican con símbolos que tienen diferentes formas, colores o proporciones.]
+.pull-left[
+Un **gráfico** (chart o plot como sinónimos) es una representación en la que los datos se codifican con símbolos que tienen diferentes formas, colores o proporciones.]
 
 .pull-right[
 ```{r, out.width = "100%", echo = FALSE}
-knitr::include_graphics("imagenes/0.1.PNG", dpi = 500)
+knitr::include_graphics("imagenes/0.2.PNG", dpi = 600)
 ```
 ]
 
@@ -56,7 +57,14 @@ knitr::include_graphics("imagenes/0.1.PNG", dpi = 500)
 
 #### 3. Definición
 
-Un **mapa** es una representación de un área geográfica o una representación de los datos que pertenecen a esa área geográfica.
+.pull-left[
+Un **mapa** es una representación de un área geográfica o una representación de los datos que pertenecen a esa área geográfica.]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/0.3.PNG", dpi = 600)
+```
+]
 
 ]
 
@@ -64,7 +72,15 @@ Un **mapa** es una representación de un área geográfica o una representación
 
 #### 4. Definición
 
-Una **infografía** es una representación visual multiseccional de información con la intención de comunicar uno o más mensajes específicos. Son una mezcla de gráficos, mapas, ilustraciones y texto que brinda explicación y contexto.
+.pull-left[Una **infografía** es una representación visual multiseccional de información con la intención de comunicar uno o más mensajes específicos. Son una mezcla de gráficos, mapas, ilustraciones y texto que brinda explicación y contexto.
+]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("imagenes/0.4.PNG", dpi = 600)
+```
+]
+
 
 ]
 
@@ -144,6 +160,11 @@ xaringanExtra::use_extra_styles(
 class: inverse, center, middle
 # .font150[HISTOGRAMAS CON R]
 
+---
+
+# .font150[HISTOGRAMAS CON R]
+
+
 
 ---
 
@@ -153,7 +174,7 @@ class: inverse, center, middle
 .panelset[
 .panel[.panel-name[Paso 1]
 
-#### 1. Cargar paquetes
+#### 1. Cargar paquetes.
 
 - `tidyverse` y `patchwork`
 
@@ -173,31 +194,35 @@ library(patchwork)
 
 .panel[.panel-name[Paso 2]
 
-#### 2. Importar datos
+#### 2. Importar datos.
 
-
-.pull-left[
+.font105[
 ```{r, eval = FALSE}
-datos <- read_csv(file = "data3_clean.csv")
+data <- read_csv(file = "data3_clean.csv")
 ```
+
+```{r echo = FALSE, out.width = "70%"}
+data <- read_csv(file = "data3_clean.csv")
+```
+
 ]
 
 ]
 
 .panel[.panel-name[Paso 3]
 
-#### 3. Cargar datos en ggplot
+#### 3. Cargar datos en ggplot.
 
 
 .pull-left[
 ```{r, eval = FALSE}
-ggplot(datos) 
+ggplot(data)
 ```
 ]
 
 .pull-right[
-```{r, out.width = "100%", echo = FALSE}
-knitr::include_graphics("imagenes/1. Vincular datos a ggplot.png", dpi = 500)
+```{r echo = FALSE, out.width = "70%"}
+ggplot(data)
 ```
 ]
 
@@ -205,35 +230,36 @@ knitr::include_graphics("imagenes/1. Vincular datos a ggplot.png", dpi = 500)
 
 .panel[.panel-name[Paso 4]
 
-#### 4. Indicar la variable de análisis con aes
+#### 4. Indicar la variable de análisis con aes.
 
 .pull-left[
 ```{r, eval = FALSE}
-ggplot(datos, aes(x = ase_total)) 
+ggplot(data, aes(x = ase_total)) 
 ```
 ]
 
 .pull-right[
-```{r, out.width = "100%", echo = FALSE}
-knitr::include_graphics("imagenes/2. Indicar la variable de análisis.png", dpi = 500)
+```{r echo = FALSE, out.width = "70%"}
+ggplot(data, aes(x = ase_total)) 
 ```
 ]
 ]
 
 .panel[.panel-name[Paso 5]
 
-#### 5. Señalar que se trabajará con un gráfico de histograma
+#### 5. Señalar que se trabajará con un gráfico de histograma.
 
 .pull-left[
 ```{r, eval = FALSE}
-ggplot(datos, aes(x = ase_total)) +
+ggplot(data, aes(x = ase_total)) +
   geom_histogram()
 ```
 ]
 
 .pull-right[
-```{r, out.width = "100%", echo = FALSE}
-knitr::include_graphics("imagenes/3. Gráfico histograma.png", dpi = 500)
+```{r echo=FALSE, out.width = "70%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram()
 ```
 ]
 
@@ -247,33 +273,64 @@ knitr::include_graphics("imagenes/3. Gráfico histograma.png", dpi = 500)
 .panelset[
 .panel[.panel-name[Paso 6]
 
-#### 6. Amplitud de intervalo, color, relleno.
+#### 6. Amplitud de intervalo utilizando la regla de Sturges `function(x) (max(x)-min(x))/nclass.Sturges(x)`.
 
 .pull-left[
 ```{r, eval = FALSE}
 ggplot(data, aes(x = ase_total)) +
-  geom_histogram(binwidth = 5,
+  geom_histogram(binwidth = 7))
+```
+
+
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x))
+```
+
+]
+
+.pull-right[
+```{r echo = FALSE, out.width = "70%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(
+    binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x))
+```
+]
+]
+
+.panel[.panel-name[Paso 7]
+
+####7. Color y relleno.
+
+.pull-left[
+```{r, eval = FALSE}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
                  color = "black",
                  fill = "skyblue")
 ```
 ]
 
 .pull-right[
-```{r, out.width = "100%", echo = FALSE}
-knitr::include_graphics("imagenes/6. Amplitud, color, relleno.png", dpi = 500)
+```{r echo = FALSE, out.width = "70%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue")
 ```
 ]
-
 ]
 
-.panel[.panel-name[Paso 7]
 
-#### 7. Tema
+
+.panel[.panel-name[Paso 8]
+
+#### 8. Tema.
 
 .pull-left[
 ```{r, eval = FALSE}
 ggplot(data, aes(x = ase_total)) +
-  geom_histogram(binwidth = 5,
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
                  color = "black",
                  fill = "skyblue") +
   theme_classic()
@@ -281,27 +338,31 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-```{r, out.width = "100%", echo = FALSE}
-knitr::include_graphics("imagenes/7. Tema.png", dpi = 500)
+```{r echo = FALSE, out.width = "80%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") +
+  theme_classic()
 ```
 ]
 
 ]
 
-.panel[.panel-name[Paso 8]
+.panel[.panel-name[Paso 9]
 
-#### 8. Anotaciones (labs)
+#### 9. Anotaciones `labs`.
 
 
 .pull-left[
 ```{r, eval = FALSE}
 ggplot(data, aes(x = ase_total)) +
-  geom_histogram(binwidth = 5,
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
                  color = "black",
                  fill = "skyblue") + 
   labs(
     title = "Distribución de puntajes de Autoeficacia Académica",
-    subtitle = "Base de datos 3 - AMP",
+    subtitle = "Base de datos de Rohmani & Andriani (2021)",
     x = "Autoeficacia Académica",
     y = "Frecuencia",
     caption  = "Avances en Medición Psicológica") +
@@ -310,25 +371,36 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-```{r, out.width = "100%", echo = FALSE}
-knitr::include_graphics("imagenes/8. Anotaciones.png", dpi = 500)
+```{r echo = FALSE, out.width = "80%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica",
+    subtitle = "Base de datos de Rohmani & Andriani (2021)",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  theme_classic()
 ```
 ]
+
 ]
 
-.panel[.panel-name[Paso 9]
+.panel[.panel-name[Paso 10]
 
-#### 9. Utilizar facet_wrap para visualizar los resultados según un tipo de variable categórica
+#### 10. Utilizar facet_wrap para visualizar los resultados según un tipo de variable categórica.
 
 .pull-left[
 ```{r, eval = FALSE}
 ggplot(data, aes(x = ase_total)) +
-  geom_histogram(binwidth = 5,
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
                  color = "black",
                  fill = "skyblue") + 
   labs(
     title = "Distribución de puntajes de Autoeficacia Académica según el sexo",
-    subtitle = "Base de datos 3 - AMP",
+    subtitle = "Base de datos de Rohmani & Andriani (2021)",
     x = "Autoeficacia Académica",
     y = "Frecuencia",
     caption  = "Avances en Medición Psicológica") +
@@ -338,13 +410,22 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-```{r, out.width = "100%", echo = FALSE}
-knitr::include_graphics("imagenes/9. Facet wrap.png", dpi = 500)
+```{r echo = FALSE, out.width = "80%"}
+ggplot(data, aes(x = ase_total)) +
+  geom_histogram(binwidth = function(x) (max(x)-min(x))/nclass.Sturges(x),
+                 color = "black",
+                 fill = "skyblue") + 
+  labs(
+    title = "Distribución de puntajes de Autoeficacia Académica según el sexo",
+    subtitle = "Base de datos de Rohmani & Andriani (2021)",
+    x = "Autoeficacia Académica",
+    y = "Frecuencia",
+    caption  = "Avances en Medición Psicológica") +
+  facet_wrap(vars(sexo)) + 
+  theme_classic()
 ```
 ]
-
 ]
-
 ]
 
 
