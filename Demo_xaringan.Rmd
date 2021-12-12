@@ -158,11 +158,14 @@ xaringanExtra::use_extra_styles(
 ---
 
 class: inverse, center, middle
-# .font150[HISTOGRAMAS CON R]
+# .font150[HISTOGRAMAS]
 
 ---
 
 # .font150[HISTOGRAMAS CON R]
+.font105[**Definición**]
+Representación gráfica de datos continuos mediante barras de altura variable, similar a un GRÁFICO DE BARRAS, pero con bloques en el eje X; contiguos entre sí para denotar su naturaleza continua.
+
 
 
 
@@ -346,7 +349,6 @@ ggplot(data, aes(x = ase_total)) +
   theme_classic()
 ```
 ]
-
 ]
 
 .panel[.panel-name[Paso 9]
