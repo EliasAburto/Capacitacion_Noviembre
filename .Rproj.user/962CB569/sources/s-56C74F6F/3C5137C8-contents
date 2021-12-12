@@ -298,7 +298,7 @@ knitr::include_graphics("imagenes/Histogram_1.PNG", dpi = 500)
 
 ---
 
-# HISTOGRAMAS
+# HISTOGRAMA
 .font105[**Presentación básica de un histograma en R**]
 
 .panelset[
