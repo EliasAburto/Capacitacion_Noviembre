@@ -10,7 +10,7 @@
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xc70de9fe61a4e3c86406bdd36286c20","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"c182d9d357a14cbfaa30c06dbeed6457","expires":1}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -31,7 +31,7 @@ class: center, middle, inverse, title-slide
 # Visualización de datos con R
 ### Jorge Huanca, Jackeline García y Elías Aburto
 ### Avances en Medición Psicológica
-### 13/12/2021
+### 17/12/2021
 
 ---
 
@@ -51,9 +51,17 @@ class: inverse, center, middle
 
 #### 1. Definición
 
+.pull-left[
 **Visualización** es un tipo de representación visual de información diseñada para permitir la comunicación, el análisis, el descubrimiento, la exploración, etc.
 
+]
 
+.pull-right[
+&lt;div&gt;
+&lt;p style = 'text-align:center;'&gt;
+&lt;img src = "https://loquenadietedice.com/wp-content/uploads/2017/09/hombre-visualizando.jpg" width="350px"&gt;
+
+]
 ]
 
 .panel[.panel-name[Gráfico]
@@ -101,20 +109,29 @@ Un **mapa** es una representación de un área geográfica o una representación
 
 #### 5. Definición
 
+.pull-left[
 -	Representación de datos diseñada para permitir el análisis, la exploración y el descubrimiento.
 
 -	No busca transmitir mensajes predefinidos por sus diseñadores.
 
 -	Herramienta que permite a las personas extraer sus propias conclusiones de los datos.
 
+]
+
+.pull-right[
+&lt;div&gt;
+&lt;p style = 'text-align:center;'&gt;
+&lt;img src = "https://neixar.com/wp-content/uploads/2019/06/Visualizaci%C3%B3n-Neixar-imagen-destacada-846x656.jpg" width="350px"&gt;
+]
 
 ]
 ]
 
 ---
-#¿por qué es importante visualizar los datos? (Healy, 2019)
+##¿por qué es importante visualizar los datos? (Healy, 2019)
 
-En el ejemplo de Anscombe a pesar de que las puntuaciones estaban en distintas posiciones el coeficiente de correlación era el mismo. La visualización de datos facilita el análisis de la distribución de los datos y corroborar si cumple los supuestos fundamentales de las técnicas estadísticas.
+- Diferente distribución, mismo coeficiente de correlación.
+- Análisis de distribución de los datos y corroborar si cumple los supuestos fundamentales de las técnicas estadísticas.
 
 .pull-left[
 &lt;img src="imagenes/1.PNG" width="70%" /&gt;
@@ -162,27 +179,122 @@ top:1em;right:1em;
   document.addEventListener('DOMContentLoaded', addLogo)
 })()</script>
 </div>
+---
+
+##¿por qué es importante conocer sobre visualización de datos? 
+
+####Para entender los errores comunes en la construcción de gráficos y evitarlos en el futuro (Healy, 2019).
+
+.panelset[
+.panel[.panel-name[El mal gusto]
+
+Utilizar excesivos elementos gráficos que dificultan la interpretación.
+
+&lt;img src="imagenes/3.PNG" width="70%" /&gt;
+
+]
+
+.panel[.panel-name[Datos errados 1]
+
+Forzar la interpretación de los datos a intereses particulares.
+
+
+&lt;img src="imagenes/4.PNG" width="90%" /&gt;
+]
+
+.panel[.panel-name[Datos errados 2]
+
+Forzar la interpretación de los datos a intereses particulares.
+
+
+&lt;img src="imagenes/5.PNG" width="80%" /&gt;
+]
+
+.panel[.panel-name[Problemas de percepción]
+
+La forma y el color que se elija pueden ser claves.
+
+
+&lt;img src="imagenes/6.PNG" width="95%" /&gt;
+]
+]
 
 ---
 
 class: inverse, center, middle
-# .font150[HISTOGRAMAS CON R]
+# .font150[HISTOGRAMA]
 
 ---
 
-# .font150[HISTOGRAMAS CON R]
+# HISTOGRAMA
+.font105[**Descripción general (Harris, 1999; Zedeck, 2013)**]
+
+.panelset[
+.panel[.panel-name[Definición]
 
 
+Representación gráfica de datos continuos mediante barras de altura variable, similar a un GRÁFICO DE BARRAS, pero con bloques en el eje X; contiguos entre sí para denotar su naturaleza continua.
+
+&lt;div&gt;
+&lt;p style = 'text-align:center;'&gt;
+&lt;img src = "https://lh3.googleusercontent.com/proxy/uCRx5QAbNk_Nge3CdH-SMQKU2PKoicbSEo-HneCKmvgMwt4mVY6e00Xy1ELK3rSu0yG9zTGxHjxt5TqGtOXEG7CRhdfW8mcrdijbCs9AwmZdRJjY5uHRt0e7VrHNS1LZOriJrkr_zScN64xSMzgRCMY3lNFlmKjH4uPSjXy3SfkJM5iqhn0fLHFMvxE" width="350px"&gt;
+
+]
+]
+
+.panel[.panel-name[Proceso 1]
+
+####1. Dado un conjunto de datos:
+
+&lt;img src="imagenes/Histo_1.PNG" width="100%" /&gt;
+]
+
+.panel[.panel-name[Proceso 2]
+
+####2. Los datos datos representados en una coordenada.
+
+&lt;img src="imagenes/Histo_2.PNG" width="100%" /&gt;
+]
+
+.panel[.panel-name[Proceso 3]
+
+####3. Se forman intervalos de clase con la misma amplitud y se contabilizan los datos de cada intervalo de clase.
+
+&lt;img src="imagenes/Histo_3.PNG" width="100%" /&gt;
+]
+
+.panel[.panel-name[Proceso 4]
+
+####4.	Introducción de columnas en cada uno de los intervalos de clase.
+
+&lt;img src="imagenes/Histo_4.PNG" width="100%" /&gt;
+
+]
+
+.panel[.panel-name[Intervalos de clase]
+
+Rango de puntuaciones o valores numéricos que constituyen un segmento o clase de una variable de interés. 
+
+####Amplitud de intervalo de clase, Regla de Sturges
+
+
+&lt;img src="imagenes/Histogram_1.PNG" width="120%" /&gt;
+- R = Rango, la diferencia entre el mayor y menor valor del conjunto de datos
+- k = número de intervalos de clase
+- N = número de valores en el conjunto de datos en observación
+
+]
+]
 
 ---
 
 # HISTOGRAMAS
-.font105[**Presentación básica de un histograma**]
+.font105[**Presentación básica de un histograma en R**]
 
 .panelset[
 .panel[.panel-name[Paso 1]
 
-#### 1. Cargar paquetes
+#### 1. Cargar paquetes.
 
 - `tidyverse` y `patchwork`
 
@@ -261,7 +373,7 @@ library(patchwork)
 
 .panel[.panel-name[Paso 2]
 
-#### 2. Importar datos
+#### 2. Importar datos.
 
 .font105[
 
@@ -286,13 +398,11 @@ data &lt;- read_csv(file = "data3_clean.csv")
 
 ]
 
-
-
 ]
 
 .panel[.panel-name[Paso 3]
 
-#### 3. Cargar datos en ggplot
+#### 3. Cargar datos en ggplot.
 
 
 .pull-left[
@@ -303,14 +413,14 @@ ggplot(data)
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-12-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-21-1.png" width="70%" /&gt;
 ]
 
 ]
 
 .panel[.panel-name[Paso 4]
 
-#### 4. Indicar la variable de análisis con aes
+#### 4. Indicar la variable de análisis con aes.
 
 .pull-left[
 
@@ -320,13 +430,13 @@ ggplot(data, aes(x = ase_total))
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-14-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-23-1.png" width="70%" /&gt;
 ]
 ]
 
 .panel[.panel-name[Paso 5]
 
-#### 5. Señalar que se trabajará con un gráfico de histograma
+#### 5. Señalar que se trabajará con un gráfico de histograma.
 
 .pull-left[
 
@@ -342,14 +452,14 @@ ggplot(data, aes(x = ase_total)) +
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-16-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-25-1.png" width="70%" /&gt;
 ]
 
 ]
 ]
 
 ---
-# HISTOGRAMAS
+# HISTOGRAMA
 .font105[**Personalización de un histograma**]
 
 .panelset[
@@ -374,7 +484,7 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-19-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-28-1.png" width="70%" /&gt;
 ]
 ]
 
@@ -393,7 +503,7 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-21-1.png" width="70%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-30-1.png" width="70%" /&gt;
 ]
 ]
 
@@ -401,7 +511,7 @@ ggplot(data, aes(x = ase_total)) +
 
 .panel[.panel-name[Paso 8]
 
-#### 8. Tema
+#### 8. Tema.
 
 .pull-left[
 
@@ -415,14 +525,13 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-23-1.png" width="80%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-32-1.png" width="70%" /&gt;
 ]
-
 ]
 
 .panel[.panel-name[Paso 9]
 
-#### 9. Anotaciones (labs)
+#### 9. Anotaciones `labs`.
 
 
 .pull-left[
@@ -443,15 +552,14 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-25-1.png" width="80%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-34-1.png" width="70%" /&gt;
 ]
-
 
 ]
 
 .panel[.panel-name[Paso 10]
 
-#### 10. Utilizar facet_wrap para visualizar los resultados según un tipo de variable categórica
+#### 10. Utilizar facet_wrap para visualizar los resultados según un tipo de variable categórica.
 
 .pull-left[
 
@@ -472,10 +580,19 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-27-1.png" width="80%" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-36-1.png" width="70%" /&gt;
 ]
 ]
 ]
+
+
+---
+REFERENCIAS
+
+- Cairo, A. (2016). The Truthful Art: Data, Charts, and Maps for Communication.
+- Harris, R. L. (1999). Information Graphics. A Comprehensive Illustrated Reference. Visual Tools for Analyzing, Managing, and Communicating. Oxford University Press.
+- Healy, K. (2019). Data Visualization: A Practical Introduction. In IEEE Transactions on Professional Communication. https://doi.org/10.1109/TPC.2019.2922787
+- Zedeck, S. (Ed.). (2013). APA Dictionary of Statistics and Research Methods. American Psychological Association.
 
 
 ---
@@ -529,7 +646,7 @@ ggplot(data = iris)
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-40-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -551,7 +668,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-33-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-42-1.png" width="504" /&gt;
 ]
 
 ---
@@ -572,7 +689,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-35-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-44-1.png" width="504" /&gt;
 ]
 
 ---
@@ -604,7 +721,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-37-1.png" width="504" /&gt;
+&lt;img src="Demo_xaringan_files/figure-html/unnamed-chunk-46-1.png" width="504" /&gt;
 ]
 
 ---
@@ -627,7 +744,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-39-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-48-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -655,7 +772,7 @@ ggplot(data = iris,
 --
 
 .pull-right[
-![](Demo_xaringan_files/figure-html/unnamed-chunk-41-1.png)&lt;!-- --&gt;
+![](Demo_xaringan_files/figure-html/unnamed-chunk-50-1.png)&lt;!-- --&gt;
 ]
 
 ---
