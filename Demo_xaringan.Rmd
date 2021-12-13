@@ -237,8 +237,9 @@ Representación gráfica de datos continuos mediante barras de altura variable, 
 
 <div>
 <p style = 'text-align:center;'>
-<img src = "https://lh3.googleusercontent.com/proxy/uCRx5QAbNk_Nge3CdH-SMQKU2PKoicbSEo-HneCKmvgMwt4mVY6e00Xy1ELK3rSu0yG9zTGxHjxt5TqGtOXEG7CRhdfW8mcrdijbCs9AwmZdRJjY5uHRt0e7VrHNS1LZOriJrkr_zScN64xSMzgRCMY3lNFlmKjH4uPSjXy3SfkJM5iqhn0fLHFMvxE" width="350px">
-
+```{r, out.width = "43%", echo = FALSE}
+knitr::include_graphics("imagenes/0.5.0.png", dpi = 500)
+```
 ]
 ]
 
@@ -308,14 +309,15 @@ knitr::include_graphics("imagenes/Histogram_1.PNG", dpi = 500)
 
 - `tidyverse` y `patchwork`
 
+
 .pull-left[
-```{r}
+```{r, message = FALSE, warning = FALSE}
 library(tidyverse)
 ```
 ]
 
 .pull-right[
-```{r}
+```{r, message = FALSE, warning = FALSE}
 library(patchwork)
 ```
 ]
@@ -387,7 +389,7 @@ ggplot(data, aes(x = ase_total)) +
 ]
 
 .pull-right[
-```{r echo=FALSE, out.width = "70%"}
+```{r echo=FALSE, out.width = "70%", message = FALSE, warning = FALSE}
 ggplot(data, aes(x = ase_total)) +
   geom_histogram()
 ```
@@ -564,7 +566,9 @@ REFERENCIAS
 - Cairo, A. (2016). The Truthful Art: Data, Charts, and Maps for Communication.
 - Harris, R. L. (1999). Information Graphics. A Comprehensive Illustrated Reference. Visual Tools for Analyzing, Managing, and Communicating. Oxford University Press.
 - Healy, K. (2019). Data Visualization: A Practical Introduction. In IEEE Transactions on Professional Communication. https://doi.org/10.1109/TPC.2019.2922787
+- Hernández, V., Prada, R., y Hernández, C. A. (2018). Bienestar subjetivo entre adultos mayores institucionalizados en la ciudad de Cúcuta, Colombia. Diversitas: Perspectivas en Psicología, 14(2), 243-262. https://doi.org/10.15332/s1794-9998.2018.0002.04
 - Zedeck, S. (Ed.). (2013). APA Dictionary of Statistics and Research Methods. American Psychological Association.
+
 
 
 ---
